@@ -37,16 +37,22 @@ function Hero(image, top, left, size , speed){
 var hero = new Hero('khunglong.jpg', 20, 30, 200, 60);
 
 function start(){
-    if(hero.left < window.innerWidth - hero.size && hero.left < 800){
+    if(hero.left < window.innerWidth - hero.size && hero.top === 20){
         hero.moveRight();
     }
-    else if (hero.top < window.innerHeight - hero.size && hero.left > 700 && hero.top < 600)
+    else if (hero.left > 0 && hero.top < 600)
     {
         hero.moveDown();
     }
+    else if (hero.left > 0 && hero.top > 230) {
+        hero.moveLeft()
+    }
+    else if ( hero.left < 230 && hero.top > 0) {
+        hero.moveUp()
+    }
 
     document.getElementById('game').innerHTML = hero.getHeroElement();
-    setTimeout(start, 500)
+    setTimeout(start, 50)
 }
 
 start();
